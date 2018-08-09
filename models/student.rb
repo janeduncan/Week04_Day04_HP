@@ -35,4 +35,8 @@ class Student
     return result
   end
 
+  def student_name()
+    return "#{@first_name} #{@second_name}"
+  end
+
 end
