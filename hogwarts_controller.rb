@@ -21,3 +21,8 @@ post '/students' do
   @student.save()
   erb (:create)
 end
+
+# IMAGES
+get '/images/:file' do
+  send_file File.expand_path(params[:file], settings.public_folder)
+end
