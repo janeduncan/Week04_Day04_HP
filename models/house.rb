@@ -18,6 +18,23 @@ class House
     @id = student_data.first()['id'].to_i()
   end
 
+  def update()
+    sql = "UPDATE houses SET name = $1 WHERE id = $2"
+    values = [@name, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def delete()
+    sql = "DELETE FROM houses WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM houses"
+    SqlRunner.run(sql)
+  end
+
   def self.all()
     sql = "SELECT * FROM houses"
     houses = SqlRunner.run(sql)
@@ -32,5 +49,6 @@ class House
     result = House.new(house.first())
     return result
   end
+
 
 end
